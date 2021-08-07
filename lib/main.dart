@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/home_page.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({ Key? key }) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -14,8 +15,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Pakistan"),
+    return MaterialApp(
+      home: Scaffold(
+        body: HomePage(),
+      ),
     );
   }
 }
