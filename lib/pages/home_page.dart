@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
         child: Center(
           child: Container(
             child: Text(
-              "Welcome to $days days of the Flutter $name",
+              "Welcome to $days days of Flutter $name",
               textDirection: TextDirection.ltr,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_catalog_app/home_page.dart';
+import 'package:flutter_catalog_app/pages/home_page.dart';
+import 'package:flutter_catalog_app/pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,9 +17,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: HomePage(),
-      ),
+      theme: ThemeData(colorScheme: ColorScheme.light()),
+      //home: HomePage(),
+      initialRoute: "/Home",
+      routes: {
+        "/": (context) => LoginPage(),
+        "/Home": (context) => HomePage(),
+        "/Login_Page": (context) => LoginPage(),
+      },
     );
   }
 }
