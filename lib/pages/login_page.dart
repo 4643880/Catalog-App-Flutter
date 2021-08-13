@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String userName = "";
-  bool button_design = false;
+  bool buttonDesign = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                   InkWell(
                     onTap: () async {
                       setState(() {
-                        button_design = true;
+                        buttonDesign = true;
                       });
                       await Future.delayed(Duration(seconds: 1));
                       Navigator.pushNamed(context, MyRoutes.home_route);
@@ -63,10 +63,10 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                           color: Colors.deepPurple,
                           borderRadius: BorderRadius.circular(
-                            button_design ? 50 : 8,
+                            buttonDesign ? 50 : 8,
                           )),
                       alignment: Alignment.center,
-                      child: button_design
+                      child: buttonDesign
                           ? Icon(
                               Icons.done,
                               color: Colors.white,
@@ -76,8 +76,8 @@ class _LoginPageState extends State<LoginPage> {
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25),
                             ),
-                      height: button_design ? 75 : 50,
-                      width: button_design ? 75 : 150,
+                      height: buttonDesign ? 75 : 50,
+                      width: buttonDesign ? 75 : 150,
                     ),
                   )
                   // ElevatedButton(
