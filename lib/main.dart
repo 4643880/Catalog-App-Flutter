@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.light(),
       ),
       //home: HomePage(),
-      initialRoute: "/",
+      initialRoute: MyRoutes.home_route,
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.home_route: (context) => HomePage(),
