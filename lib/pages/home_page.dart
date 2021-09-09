@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/models/catalog.dart';
 import 'package:flutter_catalog_app/widgets/drawer.dart';
+import 'package:flutter_catalog_app/widgets/items_widget.dart';
 
 class HomePage extends StatelessWidget {
-  //const HomePage({Key? key}) : super(key: key);
+
+  final bravo = List.generate(20, (index) => MyCatalogModel.product[0]);
 
   @override
-  final int days = 30;
-  final String name = "Aizaz";
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -17,16 +17,17 @@ class HomePage extends StatelessWidget {
             "Catalog App",
           ),
         ),
-      ),
-      body: Material(
-        child: Center(
-          child: Container(
-            child: Text(
-              "Welcome to $days days of Flutter $name",
-              textDirection: TextDirection.ltr,
-            ),
+      ),      
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemCount: bravo.length,
+          itemBuilder: (BuildContext context , int index){
+            return MyItemWidget(
+              alpha: bravo[0],
+            );
+          }
           ),
-        ),
       ),
       drawer: MyDrawer(),
     );

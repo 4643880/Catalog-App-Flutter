@@ -18,12 +18,12 @@ class MyDrawer extends StatelessWidget {
                  ),                         
                  accountEmail: Text("aizazisonline@gmail.com"),
                  accountName: Text("Aizaz Haider"),
-                 currentAccountPicture: Image.asset("assets/images/11.png", width: 10,),
-                //  currentAccountPicture:  CircleAvatar(
-                //    radius: 11,
-                //    backgroundImage: AssetImage("assets/images/11.png"),
-                //    backgroundColor: Colors.white,
-                //  ),
+                //  currentAccountPicture: Image.asset("assets/images/11.png", width: 10,),
+                 currentAccountPicture:  CircleAvatar(
+                   radius: 11,
+                   backgroundImage: AssetImage("assets/images/11.png"),
+                   backgroundColor: Colors.white,
+                 ),
             ),                          
             ),  
             Divider(color: Colors.white,height: 5.0 ,),
