@@ -21,3 +21,32 @@ import 'package:flutter/cupertino.dart';
 //           color: Colors.black,
 //         ),        
 //       ),
+
+
+
+
+
+
+
+// Lecture 15 My Data Classes for Json Mapping
+
+  // // Creating Named Constructor for Decode Map main convert kia
+  // factory Items.fromJson(Map<String, dynamic> mymap){
+  //   return Items(
+  //     id: mymap["id"],  /* Getting "id" from map file*/     
+  //     name: mymap["name"], /* Getting "name" from map file*/
+  //     desc: mymap["desc"],
+  //     price: mymap["price"],
+  //     color: mymap["color"],
+  //     imageUrl: mymap["imageUrl"]
+  //   );
+  // }
+  // // Creating toJson for Encode string main convert kia
+  // toJson() =>{
+  //   "id": id,
+  //   "name": name,
+  //   "desc": desc,
+  //   "price": price,
+  //   "color": color,
+  //   "imageUrl": imageUrl,
+  // };

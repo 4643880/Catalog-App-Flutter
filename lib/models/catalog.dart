@@ -1,5 +1,11 @@
+import 'dart:convert';
 
-class Items{
+class MyCatalogModel{
+  static List<Items> product;
+}
+
+
+class Items {
   final int id;
   final String name;
   final String desc;
@@ -7,18 +13,90 @@ class Items{
   final String color;
   final String imageUrl;
 
-  Items({this.id, this.name, this.desc, this.price, this.color, this.imageUrl});
+  Items({
+     this.id,
+     this.name,
+     this.desc,
+     this.price,
+     this.color,
+     this.imageUrl,
+  });
+  
+  
+
+  // Items copyWith({
+  //   int? id,
+  //   String? name,
+  //   String? desc,
+  //   int? price,
+  //   String? color,
+  //   String? imageUrl,
+  // }) {
+  //   return Items(
+  //     id: id ?? this.id,
+  //     name: name ?? this.name,
+  //     desc: desc ?? this.desc,
+  //     price: price ?? this.price,
+  //     color: color ?? this.color,
+  //     imageUrl: imageUrl ?? this.imageUrl,
+  //   );
+  // }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'desc': desc,
+      'price': price,
+      'color': color,
+      'imageUrl': imageUrl,
+    };
+  }
+
+  factory Items.fromMap(Map<String, dynamic> map) {
+    return Items(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      imageUrl: map['imageUrl'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory Items.fromJson(String source) => Items.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'Items(id: $id, name: $name, desc: $desc, price: $price, color: $color, imageUrl: $imageUrl)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is Items &&
+      other.id == id &&
+      other.name == name &&
+      other.desc == desc &&
+      other.price == price &&
+      other.color == color &&
+      other.imageUrl == imageUrl;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+      name.hashCode ^
+      desc.hashCode ^
+      price.hashCode ^
+      color.hashCode ^
+      imageUrl.hashCode;
+  }
 }
 
-class MyCatalogModel{
-  static final product = [
-    Items(
-      id: 1,
-      name: "iPhone 12 Pro",
-      desc: "Apple iPhone 12th generation",
-      price: 999,
-      color: "#33505a",
-      imageUrl:  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc"
-    ),
-  ];
-}
+
+
+

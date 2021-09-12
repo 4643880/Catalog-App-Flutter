@@ -13,22 +13,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  // List Generator Starts Here
-  final bravo = List.generate(20, (index) => MyCatalogModel.product[0]);
+  // Dummy List Generator Starts Here
+  //final bravo = List.generate(20, (index) => MyCatalogModel.product[0]);
   // Init State Starts Here  
   @override
   void initState() {    
     super.initState();
-    MyloadData();
+    myloadData();
   }
 
   // Using Function MyloadData for init 
-  MyloadData() async {
-      var catalog_json = await rootBundle.loadString("assets/files/catalog.json");
-      var myDecodedData = jsonDecode(catalog_json);
-      print(myDecodedData);
-      var Product_Data_From_Decoded = myDecodedData["products"];
-      print(Product_Data_From_Decoded);      
+  myloadData() async {    
+    //await Future.delayed(Duration(seconds: 5));
+      var catalogJson = await rootBundle.loadString("assets/files/catalog.json");
+      var myDecodedData = jsonDecode(catalogJson); 
+      var productDataFromDecoded = myDecodedData["products"];
+
+      // list for Json Mapping
+      MyCatalogModel.product = List.from(productDataFromDecoded).map<Items>((item) => Items.fromMap(item)).toList();
+      setState(() { }); /* Most People Search it on Stackoverflow */
+      //      
+
   }
 
   @override
@@ -44,14 +49,14 @@ class _HomePageState extends State<HomePage> {
       ),      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: bravo.length,
+        child: MyCatalogModel.product != null && MyCatalogModel.product.isNotEmpty ? ListView.builder(
+          itemCount: MyCatalogModel.product.length,
           itemBuilder: (BuildContext context , int index){
             return MyItemWidget(
-              alpha: bravo[0],
+              alpha: MyCatalogModel.product[index],
             );
-          }
-          ),
+          },
+          ): Center(child: CircularProgressIndicator(),),
       ),
       drawer: MyDrawer(),
     );
