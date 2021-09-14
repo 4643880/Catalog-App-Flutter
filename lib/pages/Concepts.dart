@@ -50,3 +50,15 @@ import 'package:flutter/cupertino.dart';
   //   "color": color,
   //   "imageUrl": imageUrl,
   // };
+
+
+
+  // lecture 16 before Grid View
+  // ListView.builder(
+  //         itemCount: MyCatalogModel.product.length,
+  //         itemBuilder: (BuildContext context , int index){
+  //           return MyItemWidget(
+  //             alpha: MyCatalogModel.product[index],
+  //           );
+  //         },
+  //         )

@@ -29,7 +29,10 @@ class _HomePageState extends State<HomePage> {
       var myDecodedData = jsonDecode(catalogJson); 
       var productDataFromDecoded = myDecodedData["products"];
 
-      // list for Json Mapping
+      // Dummy list for Json Mapping
+      List<Items> mylist = List.from(productDataFromDecoded).map<Items>((item) => Items.fromMap(item)).toList();
+      
+      // It's working will delete the above list later
       MyCatalogModel.product = List.from(productDataFromDecoded).map<Items>((item) => Items.fromMap(item)).toList();
       setState(() { }); /* Most People Search it on Stackoverflow */
       //      
@@ -49,14 +52,44 @@ class _HomePageState extends State<HomePage> {
       ),      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: MyCatalogModel.product != null && MyCatalogModel.product.isNotEmpty ? ListView.builder(
-          itemCount: MyCatalogModel.product.length,
+        child: MyCatalogModel.product != null && MyCatalogModel.product.isNotEmpty         
+        ? GridView.builder(          
+          itemCount: MyCatalogModel.product.length,          
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 16,
+            mainAxisSpacing: 16
+            ),
           itemBuilder: (BuildContext context , int index){
-            return MyItemWidget(
-              alpha: MyCatalogModel.product[index],
+            final xyz = MyCatalogModel.product[index];
+            return Card(
+              clipBehavior: Clip.antiAlias,
+              shape: RoundedRectangleBorder(                
+                borderRadius: BorderRadius.circular(10)),
+              child: GridTile(
+                header: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple                    
+                    ),
+                  child: Text(xyz.name, style: TextStyle(color: Colors.white, ),)),                
+                child: Container(
+                  padding: EdgeInsets.all(40),
+                  child: Image.network(xyz.imageUrl)
+                  ),
+                footer: Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple                    
+                    ),
+                  child: Text(xyz.price.toString(), style: TextStyle(color: Colors.white, ),))
+              ),
             );
-          },
-          ): Center(child: CircularProgressIndicator(),),
+          }
+          )
+        : Center(child: CircularProgressIndicator(),),
       ),
       drawer: MyDrawer(),
     );
