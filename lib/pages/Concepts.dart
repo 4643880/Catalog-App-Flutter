@@ -28,6 +28,8 @@ import 'package:flutter/cupertino.dart';
 
 
 
+
+
 // Lecture 15 My Data Classes for Json Mapping
 
   // // Creating Named Constructor for Decode Map main convert kia
@@ -53,6 +55,18 @@ import 'package:flutter/cupertino.dart';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
   // lecture 16 before Grid View
   // ListView.builder(
   //         itemCount: MyCatalogModel.product.length,
@@ -62,3 +76,60 @@ import 'package:flutter/cupertino.dart';
   //           );
   //         },
   //         )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Lecture 16 
+// GridView.builder(          
+//           itemCount: MyCatalogModel.product.length,          
+//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: 2,
+//             crossAxisSpacing: 16,
+//             mainAxisSpacing: 16
+//             ),
+//           itemBuilder: (BuildContext context , int index){
+//             final xyz = MyCatalogModel.product[index];
+//             return Card(
+//               clipBehavior: Clip.antiAlias,
+//               shape: RoundedRectangleBorder(                
+//                 borderRadius: BorderRadius.circular(10)),
+//               child: GridTile(
+//                 header: Container(
+//                   alignment: Alignment.center,
+//                   padding: EdgeInsets.all(10),
+//                   decoration: BoxDecoration(
+//                     color: Colors.deepPurple                    
+//                     ),
+//                   child: Text(xyz.name, style: TextStyle(color: Colors.white, ),)),                
+//                 child: Container(
+//                   padding: EdgeInsets.all(40),
+//                   child: Image.network(xyz.imageUrl)
+//                   ),
+//                 footer: Container(
+//                   alignment: Alignment.center,
+//                   padding: EdgeInsets.all(10),
+//                   decoration: BoxDecoration(
+//                     color: Colors.deepPurple                    
+//                     ),
+//                   child: Text(xyz.price.toString(), style: TextStyle(color: Colors.white, ),))
+//               ),
+//             );
+//           }
+//           )
+
+
+
+
+
+
