@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
         buttonDesign = true;
       });
       await Future.delayed(Duration(seconds: 1));
-      await Navigator.pushNamed(context, MyRoutes.home_route);
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
       setState(() {
         buttonDesign = false;
       });

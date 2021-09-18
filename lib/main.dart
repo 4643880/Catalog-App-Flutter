@@ -26,11 +26,11 @@ class _MyAppState extends State<MyApp> {
       
 
 
-      initialRoute: MyRoutes.home_route,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         "/": (context) => LoginPage(),
-        MyRoutes.home_route: (context) => HomePage(),
-        MyRoutes.login_route: (context) => LoginPage(),
+        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.loginRoute: (context) => LoginPage(),
       },
     );
   }
