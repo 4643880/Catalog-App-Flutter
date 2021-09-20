@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog_app/models/catalog.dart';
+import 'package:flutter_catalog_app/pages/cart_page.dart';
 import 'package:flutter_catalog_app/widgets/drawer.dart';
 import 'package:flutter_catalog_app/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog_app/widgets/home_widgets/catalog_list.dart';
@@ -45,11 +47,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(     
+    return Scaffold(    
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepPurple,
+      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyCartPage())),
+      child: Icon(CupertinoIcons.cart, color: Colors.white,),
+      ),
       backgroundColor: MyTheme.myCreamColor,    
        body: SafeArea(
+         bottom: false,
          child: Container(           
-           padding: Vx.m32,
+           padding: Vx.mOnly(top: 32, right: 32, left: 32),
            child: Column(
              crossAxisAlignment: CrossAxisAlignment.start,             
              children: [
@@ -60,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                CircularProgressIndicator().centered().expand(),  
             ],
            ),
-         ),
+         ).pOnly(bottom: 00),
        ),
     );
   }

@@ -10,7 +10,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       bottomNavigationBar:ButtonBar(        
                   buttonPadding: EdgeInsets.all(16),
                   alignment: MainAxisAlignment.spaceAround,
@@ -22,13 +24,13 @@ class HomeDetailPage extends StatelessWidget {
                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(08)))
                      ),
                      onPressed: (){},
-                     child: "Buy".text.xl3.make().p1()
+                     child: "Add to cart".text.xl.make().p1()
                    ).wh(120, 45),
                   ],
                 ),
       backgroundColor: MyTheme.myCreamColor,
       body: SafeArea(        
-        //bottom: false,
+        bottom: false,
         child: Column(      
           children: [
             Hero(
@@ -43,13 +45,16 @@ class HomeDetailPage extends StatelessWidget {
                 child: Container(
                   width: context.screenWidth,
                   color: Colors.white,
-                  child: Column(
-                    //mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      catalog.name.text.color(MyTheme.myDarkBlue).xl4.bold.make(),
-                      catalog.desc.text.textStyle(context.captionStyle).xl.make(),
-                    ],
-                  ).p64(),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      //mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        catalog.name.text.color(MyTheme.myDarkBlue).xl4.bold.make(),
+                        catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                        "Amet ea stet lorem dolor invidunt clita diam dolores, sadipscing amet kasd tempor diam at ut, ea ipsum ipsum tempor at lorem sea et diam. Sea sit amet erat gubergren ut, sit invidunt amet ea amet lorem, justo et sit et est justo diam dolor diam sanctus, aliquyam takimata sed.".text.color(Colors.black).align(TextAlign.justify).make().pOnly(top: 16,),
+                      ],
+                    ).p64(),
+                  ),
               
                 ),
               ),

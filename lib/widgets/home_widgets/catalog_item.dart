@@ -38,7 +38,7 @@ class MyCatalogItem extends StatelessWidget {
                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(08)))
                      ),
                      onPressed: (){},
-                     child: "Buy".text.lg.make()
+                     child: "Add to cart".text.sm.make().p0()
                    ),
                   ],
                 )

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/pages/cart_page.dart';
+import 'package:flutter_catalog_app/pages/home_details.dart';
 import 'package:flutter_catalog_app/pages/home_page.dart';
 import 'package:flutter_catalog_app/pages/login_page.dart';
+import 'package:flutter_catalog_app/pages/user_profile.dart';
 import 'package:flutter_catalog_app/utils/routes.dart';
 import 'package:flutter_catalog_app/widgets/themes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,6 +34,8 @@ class _MyAppState extends State<MyApp> {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
+        MyRoutes.userProfilePage: (context) => UserProfilePage(),
+        MyRoutes.cartPage: (context) => MyCartPage(),
       },
     );
   }
