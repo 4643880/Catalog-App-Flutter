@@ -24,29 +24,29 @@ class MyCatalogItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catalog.name.text.color(MyTheme.myDarkBlue).bold.make().pOnly(top: 5),
-                catalog.desc.text.textStyle(context.captionStyle).medium.make().py(8).pOnly(right: 5),
-                10.heightBox,
+                catalog.name.text.color(Theme.of(context).accentColor).bold.make().pOnly(top: 8),
+                catalog.desc.text.color(MyTheme.myGreyColor).bold.textStyle(context.captionStyle).lg.make().py(7).pOnly(right: 5),
+                //10.heightBox,
                 ButtonBar(
                   buttonPadding: EdgeInsets.all(0),
                   alignment: MainAxisAlignment.spaceAround,
                   children: [
-                   "\$${catalog.price}".text.bold.lg.make(),
+                   "\$${catalog.price}".text.color(Theme.of(context).accentColor).bold.xl.make(),
                    ElevatedButton(                     
                      style: ButtonStyle(
-                       backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
-                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(08)))
+                       backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor),
+                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)))
                      ),
                      onPressed: (){},
-                     child: "Add to cart".text.sm.make().p0()
-                   ),
+                     child: "Add to cart".text.sm.make()
+                   ).wh(100, 28),
                   ],
-                )
+                ).pOnly(bottom: 10, right: 5)
               ],
             ),
           ),
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(Theme.of(context).cardColor).rounded.square(150).make().py16();
   }
 }

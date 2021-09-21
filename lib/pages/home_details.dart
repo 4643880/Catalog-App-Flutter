@@ -10,25 +10,27 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      backgroundColor: Theme.of(context).canvasColor,
+      appBar: AppBar(        
         backgroundColor: Colors.transparent,
       ),
-      bottomNavigationBar:ButtonBar(        
-                  buttonPadding: EdgeInsets.all(16),
-                  alignment: MainAxisAlignment.spaceAround,
-                  children: [
-                   "\$${catalog.price}".text.bold.xl4.make(),
-                   ElevatedButton(                     
-                     style: ButtonStyle(
-                       backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
-                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(08)))
-                     ),
-                     onPressed: (){},
-                     child: "Add to cart".text.xl.make().p1()
-                   ).wh(120, 45),
-                  ],
-                ),
-      backgroundColor: MyTheme.myCreamColor,
+      bottomNavigationBar:Container(   
+        child: ButtonBar(                        
+                    buttonPadding: EdgeInsets.all(16),
+                    alignment: MainAxisAlignment.spaceAround,
+                    children: [
+                     "\$${catalog.price}".text.color(Theme.of(context).accentColor).bold.xl4.make(),
+                     ElevatedButton(                     
+                       style: ButtonStyle(
+                         backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor),
+                         shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(08)))
+                       ),
+                       onPressed: (){},
+                       child: "Add to cart".text.xl.make().p1()
+                     ).wh(120, 45),
+                    ],
+                  ),
+      ),      
       body: SafeArea(        
         bottom: false,
         child: Column(      
@@ -44,14 +46,14 @@ class HomeDetailPage extends StatelessWidget {
                 height: 30,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: Theme.of(context).cardColor,
                   child: SingleChildScrollView(
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        catalog.name.text.color(MyTheme.myDarkBlue).xl4.bold.make(),
-                        catalog.desc.text.textStyle(context.captionStyle).xl.make(),
-                        "Amet ea stet lorem dolor invidunt clita diam dolores, sadipscing amet kasd tempor diam at ut, ea ipsum ipsum tempor at lorem sea et diam. Sea sit amet erat gubergren ut, sit invidunt amet ea amet lorem, justo et sit et est justo diam dolor diam sanctus, aliquyam takimata sed.".text.color(Colors.black).align(TextAlign.justify).make().pOnly(top: 16,),
+                        catalog.name.text.color(Theme.of(context).accentColor).xl4.bold.make(),
+                        catalog.desc.text.color(MyTheme.myGreyColor).textStyle(context.captionStyle).xl.make(),
+                        "Amet ea stet lorem dolor invidunt clita diam dolores, sadipscing amet kasd tempor diam at ut, ea ipsum ipsum tempor at lorem sea et diam. Sea sit amet erat gubergren ut, sit invidunt amet ea amet lorem, justo et sit et est justo diam dolor diam sanctus, aliquyam takimata sed.".text.color(MyTheme.myGreyColor).align(TextAlign.justify).make().pOnly(top: 16,),
                       ],
                     ).p64(),
                   ),

@@ -9,6 +9,6 @@ class MyProductImg extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Image.network(iMG).box.p20.color(MyTheme.myCreamColor).roundedSM.make().p16().w40(context);
+    return Image.network(iMG).box.p20.color(Theme.of(context).canvasColor).roundedSM.make().p16().w40(context);
   }
 }

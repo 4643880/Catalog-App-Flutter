@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog_app/utils/routes.dart';
-
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {  
 
@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Theme.of(context).canvasColor,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(width: 200, height: 10),
             Text(
               "Welcome, $userName",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),
             ),
             SizedBox(width: 200, height: 10),
             Padding(
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    TextFormField(                      
                       validator: (value) {
                         if (value.isEmpty) {
                           return "User name Can't be Empty";
@@ -62,7 +62,14 @@ class _LoginPageState extends State<LoginPage> {
                         userName = value;
                         setState(() {});
                       },
-                      decoration: InputDecoration(
+                      decoration: InputDecoration( 
+                        enabledBorder: UnderlineInputBorder(
+                         borderSide: BorderSide(
+                           color: Theme.of(context).accentColor
+                         )
+                       ),
+                        hintStyle: TextStyle(color: Theme.of(context).accentColor),
+                        labelStyle: TextStyle(color: Theme.of(context).accentColor),                      
                           hintText: "Enter User Name", labelText: "Username"),
                     ),
                     SizedBox(width: 200, height: 10),
@@ -76,7 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       },
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: InputDecoration(                          
+                       enabledBorder: UnderlineInputBorder(
+                         borderSide: BorderSide(
+                           color: Theme.of(context).accentColor
+                         )
+                       ),
+                        hintStyle: TextStyle(color: Theme.of(context).accentColor),
+                        labelStyle: TextStyle(color: Theme.of(context).accentColor),
                           hintText: "Enter the Password",
                           labelText: "Password"),
                     ),
@@ -84,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     Material(
                       borderRadius:
                           BorderRadius.circular(buttonDesign ? 50 : 8),
-                      color: Colors.deepPurple,
+                      color: Theme.of(context).buttonColor,
                       child: InkWell(
                         borderRadius:
                             BorderRadius.circular(buttonDesign ? 50 : 8),

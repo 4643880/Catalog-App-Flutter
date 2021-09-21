@@ -22,14 +22,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(      
+    return MaterialApp(  
+      themeMode: ThemeMode.system,    
       debugShowCheckedModeBanner: false,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       
 
 
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),

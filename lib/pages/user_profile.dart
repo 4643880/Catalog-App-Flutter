@@ -10,7 +10,7 @@ class UserProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.myCreamColor,
+      backgroundColor: Theme.of(context).canvasColor,
       body: ListView(
         children: [
            Stack(        
@@ -26,51 +26,60 @@ class UserProfilePage extends StatelessWidget {
           ),
           Column(
             children: [
-              "Aizaz Haider".text.fontFamily(GoogleFonts.zillaSlab().fontFamily).xl4.make().pOnly(top: 90),
-                    "Flutter Software Engineer".text.textStyle(context.captionStyle).xl2.make(),
+              "Aizaz Haider".text.color(Theme.of(context).accentColor).fontFamily(GoogleFonts.zillaSlab().fontFamily).xl4.make().pOnly(top: 90),
+                    "Flutter Software Engineer".text.color(MyTheme.myGreyColor).textStyle(context.captionStyle).xl2.make(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,children: [
-                        Icon(FontAwesomeIcons.facebook, color: Colors.black, size:40,).p8(),
-                        Icon(FontAwesomeIcons.linkedin, color: Colors.black, size:40,).p8(),
-                        Icon(FontAwesomeIcons.github, color: Colors.black, size:40,).p8(),
-                        Icon(FontAwesomeIcons.globe, color: Colors.black, size:40,).p8(),
+                        Icon(FontAwesomeIcons.facebook, color: Theme.of(context).buttonColor, size:40,).p8(),
+                        Icon(FontAwesomeIcons.linkedin, color: Theme.of(context).buttonColor, size:40,).p8(),
+                        Icon(FontAwesomeIcons.github, color: Theme.of(context).buttonColor, size:40,).p8(),
+                        Icon(FontAwesomeIcons.globe, color: Theme.of(context).buttonColor, size:40,).p8(),
                       ],
                     ),
-                    Divider(
-                      color: Colors.black,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,bottom: 10),
+                      child: Divider(
+                        color: Theme.of(context).accentColor,
+                        height: 3,
+                        thickness: 1,
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,children: [
                         Column(
                           children: [
-                            "39".text.bold.xl2.make(),
-                            "Projects".text.bold.lg.make()
+                            "39".text.color(Theme.of(context).accentColor).bold.xl2.make(),
+                            "Projects".text.color(Theme.of(context).accentColor).bold.lg.make()
                           ],
                         ).p16(),
                         Column(
                           children: [
-                            "539".text.bold.xl2.make(),
-                            "Following".text.bold.lg.make()
+                            "539".text.color(Theme.of(context).accentColor).bold.xl2.make(),
+                            "Following".text.color(Theme.of(context).accentColor).bold.lg.make()
                           ],
                         ).p16(),
                         Column(
                           children: [
-                            "5870".text.bold.xl2.make(),
-                            "Followers".text.bold.lg.make()
+                            "5870".text.color(Theme.of(context).accentColor).bold.xl2.make(),
+                            "Followers".text.color(Theme.of(context).accentColor).bold.lg.make()
                           ],
                         ).p16(),
 
                       ],
                     ),
-                    Divider(
-                      color: Colors.black,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 1),
+                      child: Divider(
+                        color: Theme.of(context).accentColor,                        
+                        thickness: 1,
+                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        "About".text.xl4.bold.make(),
-                    "Flutter Software Engineer and Google Developer Expert for Flutter and Dart with years of experience as consultent for multiple companies in Europe, USA and Asia. \n My mission is to create a better world with beautiful Flutter App designs and software.".text.align(TextAlign.justify).xl.make()
+                        "About".text.color(Theme.of(context).accentColor).xl4.bold.make(),
+                    "Flutter Software Engineer and Google Developer Expert for Flutter and Dart with years of experience as consultent for multiple companies in Europe, USA and Asia. \n My mission is to create a better world with beautiful Flutter App designs and software.".text.color(MyTheme.myGreyColor).align(TextAlign.justify).xl.make()
                       ],
                     ).p20(),
                     
@@ -107,7 +116,7 @@ class ProfileImage extends StatelessWidget {
     return VxBox(      
       child:  CircleAvatar(      
         radius: profileImgHeight / 2,  
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Theme.of(context).buttonColor,
         backgroundImage: AssetImage("assets/images/11.png"),
       ),
 
