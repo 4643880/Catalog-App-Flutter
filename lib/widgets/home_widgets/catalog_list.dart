@@ -15,7 +15,7 @@ class MyCatalogList extends StatelessWidget {
       itemCount: MyCatalogModel.product.length,
       itemBuilder: (BuildContext context, int index){
 
-        final catalog = MyCatalogModel.product[index];
+        final catalog = MyCatalogModel.getByPosition(index);
         
         return InkWell(
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomeDetailPage(catalog: catalog,))),         
