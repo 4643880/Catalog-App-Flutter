@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/pages/home_page.dart';
 import 'package:flutter_catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 class MyCartPage extends StatelessWidget {
@@ -73,7 +74,20 @@ class MyCartTotal extends StatelessWidget {
               
               backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor)
             ),            
-            onPressed: (){},
+            onPressed: (){
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  duration: Duration(seconds: 5),
+                  content: "Buying Not Supported yet.\n\nSoon I'll Add Payment Gateway\nRegards,\n                    Aizaz".text.make(),
+                action: SnackBarAction(
+                  textColor: Colors.white,
+                  label: "Go to Home",
+                   onPressed: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                   }),
+                )
+              );
+            },
              child: "Buy".text.xl3.white.make()
              ).wh(150, 50),
         ],
