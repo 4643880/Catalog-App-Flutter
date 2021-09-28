@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/models/cart.dart';
 import 'package:flutter_catalog_app/pages/home_page.dart';
 import 'package:flutter_catalog_app/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -34,10 +35,11 @@ class CartList extends StatefulWidget {
 }
 
 class _CartListState extends State<CartList> {
+  final _cart = MyCartModel();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 10,
+      itemCount: _cart.product?.length,
       itemBuilder: (BuildContext context, int index){
         return ListTile(
           leading: Icon(Icons.done, color: Theme.of(context).buttonColor,),
@@ -45,7 +47,7 @@ class _CartListState extends State<CartList> {
             onPressed: (){},
              icon: Icon(Icons.remove_circle_outline, color: Theme.of(context).buttonColor,)
              ),
-          title: "Item One".text.color(Theme.of(context).accentColor).make(),
+          title: _cart.product[index].name.text.color(Theme.of(context).accentColor).make(),
         );
       }
       
@@ -57,6 +59,7 @@ class _CartListState extends State<CartList> {
 
 
 class MyCartTotal extends StatelessWidget {  
+  final _cart = MyCartModel();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -64,7 +67,7 @@ class MyCartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$${999}".text.xl5.color(Theme.of(context).accentColor).make(),
+          "\$${_cart.totalPrice}".text.xl5.color(Theme.of(context).accentColor).make(),
           30.widthBox,
           ElevatedButton(
             style: ButtonStyle(

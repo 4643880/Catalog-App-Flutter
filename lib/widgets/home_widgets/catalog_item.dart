@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog_app/models/cart.dart';
 import 'package:flutter_catalog_app/models/catalog.dart';
 import 'package:flutter_catalog_app/pages/home_page.dart';
 import 'package:flutter_catalog_app/widgets/home_widgets/catalog_product_img.dart';
@@ -31,22 +32,45 @@ class MyCatalogItem extends StatelessWidget {
                   buttonPadding: EdgeInsets.all(0),
                   alignment: MainAxisAlignment.spaceAround,
                   children: [
-                   "\$${catalog.price}".text.color(Theme.of(context).accentColor).bold.xl.make(),
-                   ElevatedButton(                     
-                     style: ButtonStyle(
-                       backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor),
-                       shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)))
-                     ),
-                     onPressed: (){},
-                     child: "Add to cart".text.sm.make()
-                   ).wh(100, 28),
+                   "\$${catalog.price}".text.color(Theme.of(context).accentColor).bold.lg.make(),
+                   AddToCart(catalog: catalog).wh(95, 25),
                   ],
-                ).pOnly(bottom: 10, right: 5)
+                ).pOnly(bottom: 6, right: 5)
               ],
             ),
           ),
         ],
       ),
     ).color(Theme.of(context).cardColor).rounded.square(150).make().py16();
+  }
+}
+
+class AddToCart extends StatefulWidget {
+  final Items catalog;
+  const AddToCart({Key key, this.catalog}) : super(key: key); 
+
+  @override
+  _AddToCartState createState() => _AddToCartState();
+}
+
+class _AddToCartState extends State<AddToCart> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(                     
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor),
+        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)))
+      ),
+      onPressed: (){
+        isAdded = isAdded.toggle();
+        final _catalog = MyCatalogModel();
+        final _cart = MyCartModel();
+        _cart.catalog = _catalog;
+        _cart.add(widget.catalog);
+        setState(() { });
+      },
+      child: isAdded? Icon(Icons.done) : "Add to cart".text.sm.make() 
+    );
   }
 }

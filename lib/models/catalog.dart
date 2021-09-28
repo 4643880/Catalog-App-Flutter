@@ -3,6 +3,12 @@ import 'dart:convert';
 class MyCatalogModel{
   static List<Items> product;
 
+
+  //Singleton Class
+  // static final catModel = MyCatalogModel._internal();
+  // MyCatalogModel._internal();
+  // factory MyCatalogModel() => catModel;  
+
   //GET ITEM BY ID
   getById(int id) => 
   product.firstWhere((element) => element.id == id, orElse: null);

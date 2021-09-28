@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalog_app/models/catalog.dart';
 
 class MyCartModel{
+
+  //Singleton Class
+  // static final cartModel = MyCartModel._internal();
+  // MyCartModel._internal();
+  // factory MyCartModel() => cartModel;
+
   //Catalog Field
   MyCatalogModel _catalog;
 
@@ -18,7 +24,7 @@ class MyCartModel{
   }
 
   //Get Items in the Cart
-  List<Items> get product => _Items_ids.map((id) => _catalog.getById(id)).toList();
+  List<dynamic> get product => _Items_ids.map((id) => _catalog.getById(id)).toList();
 
   //Get Total Price
   num get totalPrice => product.fold(0, (total, current) => total + current.price);
@@ -32,5 +38,4 @@ class MyCartModel{
   void remove(Items items){
     _Items_ids.remove(items.id);
   }
-
 }

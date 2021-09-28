@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_catalog_app/models/catalog.dart';
 import 'package:flutter_catalog_app/pages/cart_page.dart';
+import 'package:flutter_catalog_app/pages/user_profile.dart';
 import 'package:flutter_catalog_app/widgets/drawer.dart';
 import 'package:flutter_catalog_app/widgets/home_widgets/catalog_header.dart';
 import 'package:flutter_catalog_app/widgets/home_widgets/catalog_list.dart';
@@ -47,7 +48,33 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {    
-    return Scaffold(    
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      drawer: MyDrawer(),
+      bottomNavigationBar: Container(        
+        color: Theme.of(context).cardColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ButtonBar(          
+              children: [
+                "Designed By Aizaz Haider".text.color(Theme.of(context).accentColor).make(),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Theme.of(context).buttonColor)
+                  ),
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => UserProfilePage()));
+                  },
+                   child: "About Me".text.make()).wh(100, 25).pOnly(left: 30, top: 06)
+                                
+              ],
+            ),
+          ],
+        ),
+      ),   
        backgroundColor: Theme.of(context).canvasColor,           
       floatingActionButton: FloatingActionButton(        
         backgroundColor: Theme.of(context).buttonColor,
@@ -57,13 +84,13 @@ class _HomePageState extends State<HomePage> {
        body: SafeArea(
          bottom: false,
          child: Container(           
-           padding: Vx.mOnly(top: 32, right: 32, left: 32),
+           padding: Vx.mOnly( right: 32, left: 32),
            child: Column(
              crossAxisAlignment: CrossAxisAlignment.start,             
              children: [
-               MyCatalogHeader().pOnly(bottom: 20),  
+               MyCatalogHeader().pOnly(bottom: 20,),  
                if(MyCatalogModel.product != null && MyCatalogModel.product.isNotEmpty)
-               MyCatalogList().expand()
+               MyCatalogList().expand()               
                else
                CircularProgressIndicator().centered().expand(),  
             ],
